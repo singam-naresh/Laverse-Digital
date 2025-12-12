@@ -40,7 +40,9 @@ const Contact = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    });
+    });fetch(`${import.meta.env.VITE_BACKEND_URL}/contact`)
+
+
 
     const result = await response.json();
 

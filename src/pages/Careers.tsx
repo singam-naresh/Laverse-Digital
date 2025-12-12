@@ -55,7 +55,8 @@ const Careers = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    });
+    });fetch(`${import.meta.env.VITE_BACKEND_URL}/career`)
+
 
     const result = await response.json();
 
