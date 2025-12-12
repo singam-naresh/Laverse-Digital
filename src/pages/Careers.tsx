@@ -49,7 +49,7 @@ const Careers = () => {
   const onSubmit = async (data: ApplicationForm) => {
   setIsSubmitting(true);
   try {
-    const response = await fetch("http://localhost:5000/career", {
+    const response = await fetch("https://laverse-digital-backend.onrender.com/career", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
