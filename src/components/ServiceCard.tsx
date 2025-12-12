@@ -1,6 +1,8 @@
 import React from "react";
-import type { Icon as LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
+
+// FIX: Lucide icon type
+type LucideIcon = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
 interface ServiceCardProps {
   icon: LucideIcon;
