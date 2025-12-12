@@ -30,19 +30,17 @@ const Contact = () => {
   } = useForm<ContactForm>({
     resolver: zodResolver(contactSchema),
   });
-
-  const onSubmit = async (data: ContactForm) => {
+const onSubmit = async (data: ContactForm) => {
   setIsSubmitting(true);
+
   try {
-    const response = await fetch("https://laverse-digital-backend.onrender.com/contact", {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/contact`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    });fetch(`${import.meta.env.VITE_BACKEND_URL}/contact`)
-
-
+    });
 
     const result = await response.json();
 
@@ -52,13 +50,13 @@ const Contact = () => {
     } else {
       toast.error(result.error || "Failed to send message.");
     }
+
   } catch (error) {
     toast.error("Server error. Please try again.");
   } finally {
     setIsSubmitting(false);
   }
 };
-
 
   const contactInfo = [
     {

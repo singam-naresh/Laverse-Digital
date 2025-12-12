@@ -46,17 +46,17 @@ const Careers = () => {
     resolver: zodResolver(applicationSchema),
   });
 
-  const onSubmit = async (data: ApplicationForm) => {
+ const onSubmit = async (data: ApplicationForm) => {
   setIsSubmitting(true);
+
   try {
-    const response = await fetch("https://laverse-digital-backend.onrender.com/career", {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/career`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    });fetch(`${import.meta.env.VITE_BACKEND_URL}/career`)
-
+    });
 
     const result = await response.json();
 
@@ -66,12 +66,14 @@ const Careers = () => {
     } else {
       toast.error(result.error || "Failed to submit application.");
     }
+
   } catch (error) {
     toast.error("Server error. Please try again.");
   } finally {
     setIsSubmitting(false);
   }
 };
+
 
 
   const positions = [
